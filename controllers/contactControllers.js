@@ -10,6 +10,13 @@ const getContacts=(req,res)=>{
 //  @route POST /api/contacts
 //  @access Public
 const createContact=(req,res)=>{
+    console.log(req.body)
+    // Destructure the Req body
+    const {name,email,phone}=req.body
+    if(!name || !email || !phone){
+        res.status(400);
+        throw new Error("All fields are modulatory")
+    }
         res.status(201).json({message:"Create Contacts"})
     }
 
