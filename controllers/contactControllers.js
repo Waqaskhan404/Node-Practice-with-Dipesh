@@ -1,11 +1,14 @@
 const asyncHandler=require("express-async-handler")
+const Contact=require("../models/contactModel")
 
 //  @ desc Get All Contacts
 //  @route GET /api/contacts
 //  @access Public
 
 const getContacts=asyncHandler( async (req,res)=>{
-    res.status(200).json({message:"Get All Contacts"})
+    //here is the model with await it get all the contact with find() function
+    const contact=await Contact.find();
+    res.status(200).json(contact)
 })
 
 //  @ desc POST  Contact
@@ -19,6 +22,12 @@ const createContact=asyncHandler( async (req,res)=>{
         res.status(400);
         throw new Error("All fields are modulatory")
     }
+    //now Create a realtime Contact which have a body 
+    const contact=await Contact.create({
+        name,
+        email,
+        phone
+    })
         res.status(201).json({message:"Create Contacts"})
     })
 
