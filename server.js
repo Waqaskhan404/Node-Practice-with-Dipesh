@@ -1,4 +1,5 @@
 const express=require("express");
+const errorHandler = require("./middleware/errorHandler");
 const dotenv=require("dotenv").config();
 
 const app=express()
@@ -13,6 +14,9 @@ app.use(express.json())
 
 // Middleware For routes and this is the Common Route "/api/contacts"
 app.use("/api/contacts",require("./routes/contactRoutes"))
+
+// Export the Error Middleware
+app.use(errorHandler)
 
 app.listen(port,function(req,res){
     console.log(`Server is Running Port  ${port}`)
