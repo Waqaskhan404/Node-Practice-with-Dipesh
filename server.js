@@ -18,6 +18,12 @@ app.use(express.json())
 // Middleware For routes and this is the Common Route "/api/contacts"
 app.use("/api/contacts",require("./routes/contactRoutes"))
 
+
+
+// Middleware For routes and this is the Common Route "/api/users"
+app.use("/api/users",require("./routes/usersRoutes"))
+
+
 // Export the Error Middleware
 app.use(errorHandler)
 
