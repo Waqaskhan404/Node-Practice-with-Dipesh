@@ -1,7 +1,13 @@
 const express=require("express");
 const router=express.Router();
-const {getContacts,createContact,getContact,updateContact,deleteContact}=require("../controllers/contactControllers")
+const {getContacts,createContact,getContact,updateContact,deleteContact}=require("../controllers/contactControllers");
+const validateToken = require("../middleware/validateTokenHandler");
 
+
+
+
+// Validate token when access these routes
+router.use(validateToken)
 
 // router.route("/").get((req,res)=>{
 //     res.status(200).json({message:"Get All Contacts"})
