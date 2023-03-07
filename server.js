@@ -8,7 +8,7 @@ const port=process.env.PORT || 5000
 
 
 // Middleware
-app.use("/",require("./routes/contactRoutes"))
+app.use("/api/contacts",require("./routes/contactRoutes"))
 
 app.listen(port,function(req,res){
     console.log(`Server is Running Port  ${port}`)
